@@ -27,7 +27,8 @@
         activeIndex: '0',
         lefts: [
           { label: "数据列表", icon: "el-icon-tickets", url: 'record'},
-          { label: "用户列表", icon: "el-icon-user", url: 'user'}
+          { label: "用户列表", icon: "el-icon-user", url: 'user'},
+          { label: "成员列表", icon: "el-icon-s-custom", url: 'admin'}
         ]
       }
     },

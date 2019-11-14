@@ -3,8 +3,8 @@
     <el-container>
       <el-header><topBar></topBar></el-header>
 
-      <el-container>
-        <el-aside width="200px"><left></left></el-aside>
+      <el-container class="p-t-20 p-r-20">
+        <el-aside width="170px"><left></left></el-aside>
 
         <el-main>
           <nuxt />

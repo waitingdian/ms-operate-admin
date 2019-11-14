@@ -52,15 +52,12 @@ module.exports = {
     baseURL: '/',
     proxy: process.NODE_ENV != 'production' && process.NODE_ENV != 'prev',
     withCredentials: true,
-    prefix: '/v1', // 表示给请求url加个前缀 /api
+    prefix: '/v1/admin', // 表示给请求url加个前缀 /api
   },
   proxy: {
-    '/v1/': {
-      target: 'http://localhost:3000/', // 代理地址
+    '/v1/admin': {
+      target: 'http://127.0.0.1:3009', // 代理地址
       changeOrigin: true
-      // pathRewrite: {
-      //   '^/api/v1': '' //将 /api 替换掉
-      // }
     }
   },
   // router: {
@@ -74,6 +71,9 @@ module.exports = {
     transpile: [/^element-ui/],
     /*
     ** You can extend webpack config here
+    *
+    *
+    *
     */
     extend (config, ctx) {
     }

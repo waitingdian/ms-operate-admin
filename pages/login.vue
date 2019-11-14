@@ -42,16 +42,23 @@
 
     methods: {
       login() {
-        this.$axios.$post('/api/v1/user/login', {
-          account: this.userName.trim(),
-          pwd: this.password.trim()
+        this.$axios.$post('/login', {
+          user_name: this.userName.trim(),
+          password: this.password.trim()
         }).then((res) => {
-          this.$store.commit('user/set', res.data.userInfo);
-          this.$axios.setHeader('Authorization', res.data.userInfo.token);
-          if (sessionStorage && sessionStorage.setItem) {
-            sessionStorage.setItem('userInfo', JSON.stringify(res.data.userInfo));
-            this.$router.push('/');
-          }
+          console.log(22222222)
+          console.log(res)
+          //todo
+          this.$router.push('/');
+          this.$store.commit('user/set', res.content);
+          // this.$axios.setHeader('Authorization', res.data.userInfo.token);
+          // if (sessionStorage && sessionStorage.setItem) {
+          //   sessionStorage.setItem('userInfo', JSON.stringify(res.data.userInfo));
+          //   this.$router.push('/');
+          // }
+          setTimeout(() => {
+            this.$message.success("登录成功")
+          }, 200)
         });
       }
     }

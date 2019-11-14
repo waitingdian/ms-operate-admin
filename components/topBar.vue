@@ -1,9 +1,9 @@
 <template>
   <div class="top-bar-container box-shadow">
     <img class="logo" src="../static/images/small-transparent-logo.png" alt="">
-    <span style="display: inline-block">码上汇编程</span>
-    <div class="pull-right">
-      <i class="icontuichu iconfont cursor-pointer fs24"></i>
+    <!--<span style="display: inline-block">码上汇编程</span>-->
+    <div class="pull-right cursor-pointer" @click="signOut">
+      <i class="icontuichu iconfont fs24"></i>
     </div>
   </div>
 </template>
@@ -22,6 +22,7 @@
     methods: {
       // 退出
       signOut() {
+        this.$router.push('/login')
       },
       personal () {
         this.$router.push('/personal/order')

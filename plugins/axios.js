@@ -10,31 +10,24 @@ export default function ({app, $axios, redirect}) {
   }
 
   $axios.interceptors.response.use(function (response) {
-    if (response.headers.isapi && response.headers.isapi == '1') {
-      if (response.data.code === 200) {
-        // response.data = response.data.data;
-        return response.data;
-      } else if (response.data.code === 401) {
-        Message.error("登录失效,请重新登录")
-        app.router.replace({
-          path: "/login",
-          query: {
-            redirect: app.router.currentRoute.fullPath
-          }
-        })
-        // setTimeout(() => {
-        //   app.router.push('/login')
-        // }, 500)
-      } else {
-        Message({
-          message: response.data.message,
-          type: 'error'
-        });
-        return Promise.reject(response.data.message);
-      }
+    if (response.data.code === 200) {
+      return response;
+    } else if (response.data.code === 401) {
+      Message.error("登录失效,请重新登录")
+      app.router.replace({
+        path: "/login",
+        query: {
+          redirect: app.router.currentRoute.fullPath
+        }
+      })
     } else {
-      return response
+      Message({
+        message: response.data.message,
+        type: 'error'
+      });
+      return Promise.reject(response.data.message);
     }
+    return response
   }, function (error) {
     // 对响应错误做点什么
     return Promise.reject(error);
